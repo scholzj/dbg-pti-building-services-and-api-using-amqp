@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker build -t scholzj/building-services-and-apis-using-amqp:latest .
+docker build --no-cache -t scholzj/building-services-and-apis-using-amqp:latest .

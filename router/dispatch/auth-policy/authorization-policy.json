@@ -1,7 +1,7 @@
 [
     ["vhost",
         {
-            "id": "default",
+            "id": "$default",
             "maxConnections": 1000,
             "maxConnectionsPerUser": 10,
             "maxConnectionsPerHost": 10,
@@ -11,17 +11,17 @@
                     "users": "admin",
                     "remoteHosts": "*",
                     "allowDynamicSource": true,
-                    "sources": "*",
-                    "targets": "*"
-                }
-                "$default:" {
+                    "sources": "$management,*",
+                    "targets": "$management,*"
+                },
+                "$default": {
                     "remoteHosts": "*",
                     "maxSessions": 10,
                     "maxSenders": 10,
                     "maxReceivers": 10,
-                    "sources": "/liveScore,temp*",
+                    "sources": "/getScore,/liveScore,temp*",
                     "targets": "/getScore"
-                },
+                }
             }
         }
     ]
