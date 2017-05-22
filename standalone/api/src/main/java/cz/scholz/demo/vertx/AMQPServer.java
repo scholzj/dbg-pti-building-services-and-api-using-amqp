@@ -43,7 +43,9 @@ public class AMQPServer {
     public void broadcast(String address, Message msg) {
         if (multicasts.containsKey(address)) {
             multicasts.get(address).forEach(sender -> {
-                sender.send(msg);
+                if (sender.isOpen()) {
+                    sender.send(msg);
+                }
             });
         }
     }

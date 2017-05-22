@@ -61,6 +61,8 @@ public class LiveScore extends AbstractVerticle {
             LOG.info("Adding game");
             Game game = scoreService.addGame(homeTeam, awayTeam);
 
+            broadcastUpdate(game);
+
             if(msg.getReplyTo() != null) {
                 Message response = new MessageImpl();
                 response.setBody(new AmqpValue(Json.encode(game)));
@@ -111,6 +113,8 @@ public class LiveScore extends AbstractVerticle {
             LOG.info("Setting game score");
             Game game = scoreService.setScore(homeTeam, awayTeam, homeTeamGoals, awayTeamGoals);
 
+            broadcastUpdate(game);
+
             if(msg.getReplyTo() != null) {
                 Message response = new MessageImpl();
                 response.setBody(new AmqpValue(Json.encode(game)));
@@ -154,7 +158,7 @@ public class LiveScore extends AbstractVerticle {
         }
     }
 
-    public void broadcastUpdates(Game game)
+    public void broadcastUpdate(Game game)
     {
         LOG.info("Broadcasting game update " + game);
 
