@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-docker stop wswg
+docker stop wsgw
+docker rm wsgw
