@@ -39,7 +39,7 @@ public class Service {
             Properties properties = new Properties();
             properties.setProperty(Context.INITIAL_CONTEXT_FACTORY, "org.apache.qpid.jms.jndi.JmsInitialContextFactory");
             properties.setProperty("connectionfactory.connection", String.format(
-                    "amqp://%s:%d?jms.forceAsyncSend=true&jms.username=%s&jms.password=%s&jms.presettlePolicy.presettleProducers=true&amqp.idleTimeout=120000&amqp.traceFrames=true",
+                    "amqp://%s:%d?jms.forceAsyncSend=true&jms.username=%s&jms.password=%s&jms.presettlePolicy.presettleProducers=true&amqp.idleTimeout=120000&amqp.traceFrames=false",
                     "localhost",
                     5672,
                     "admin",
